@@ -15,65 +15,46 @@
 
 ## Overview
 
-A one-maybe-two sentence summary of what the module does/what problem it solves.
-This is your 30 second elevator pitch for your module. Consider including
-OS/Puppet version it works with.
+This module installs wkthmltopdf and wkhtmltoimage. This module currently only
+supports Ubuntu 12.04 and 14.04 - Pull Requests are welcome for other platforms!
 
 ## Module Description
 
-If applicable, this section should have a brief description of the technology
-the module integrates with and what that integration enables. This section
-should answer the questions: "What does this module *do*?" and "Why would I use
-it?"
-
-If your module has a range of functionality (installation, configuration,
-management, etc.) this is the time to mention it.
+This module downloads and installs the wkhtmltox package and installs
+wkhtmltopdf and wkhtmltoimage.
 
 ## Setup
 
 ### What wkhtmltox affects
 
-* A list of files, packages, services, or operations that the module will alter,
-  impact, or execute on the system it's installed on.
-* This is a great place to stick any warnings.
-* Can be in list or paragraph form.
+* Installs wkhtmltopdf and wkhtmltoimage
+* Installs the dependencies for the aformentioned packages:
+  * fontconfig
+  * libfontconfig1
+  * libjpeg8
+  * libxrender1
+  * xfonts-base
+  * xfonts-75dpi
 
-### Setup Requirements **OPTIONAL**
+### Setup Requirements
 
-If your module requires anything extra before setting up (pluginsync enabled,
-etc.), mention it here.
-
-### Beginning with wkhtmltox
-
-The very basic steps needed for a user to get the module up and running.
-
-If your most recent release breaks compatibility or requires particular steps
-for upgrading, you may wish to include an additional section here: Upgrading
-(For an example, see http://forge.puppetlabs.com/puppetlabs/firewall).
+Requires wget.
 
 ## Usage
 
-Put the classes, types, and resources for customizing, configuring, and doing
-the fancy stuff with your module here.
+```puppet
+include wkhtmltox
+```
 
-## Reference
+Or:
 
-Here, list the classes, types, providers, facts, etc contained in your module.
-This section should include all of the under-the-hood workings of your module so
-people know what the module is touching on their system but don't need to mess
-with things. (We are working on automating this section!)
+```puppet
+class { 'wkhtmltox':
+  version => '0.12.2.1'
+}
+```
 
 ## Limitations
 
-This is where you list OS compatibility, version compatibility, etc.
-
-## Development
-
-Since your module is awesome, other users will want to play with it. Let them
-know what the ground rules for contributing are.
-
-## Release Notes/Contributors/Etc **Optional**
-
-If you aren't using changelog, put your release notes here (though you should
-consider using changelog). You may also add any additional sections you feel are
-necessary or important to include here. Please use the `## ` header.
+Currently only supports Ubuntu Precise and Ubunty Trusty. Submit and issue or
+Pull Request if there are additional platforms you'd like to see supported.

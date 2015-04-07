@@ -1,4 +1,5 @@
 # wkhtmltox
+[![Build Status](https://travis-ci.org/todd/puppet-wkhtmltox.svg)](https://travis-ci.org/todd/puppet-wkhtmltox) 
 
 #### Table of Contents
 

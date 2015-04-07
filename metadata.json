@@ -1,19 +1,21 @@
 {
   "name": "todd-wkhtmltox",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "todd",
   "summary": "Puppet module for installing wkhtmltopdf and wkhtmltoimage",
   "license": "MIT",
   "source": "https://github.com/todd/puppet-wkhtmltox",
   "project_page": "https://github.com/todd/puppet-wkhtmltox",
   "issues_url": "https://github.com/todd/puppet-wkhtmltox/issues",
-  "operatingsystem_support": {
-    "operatingsystem": "Ubuntu",
-    "operatingsystemrelease": [
-      "12.04",
-      "14.04"
-    ]
-  },
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "12.04",
+        "14.04"
+      ]
+    }
+  ],
   "dependencies": [
     {
       "name": "puppetlabs-stdlib",

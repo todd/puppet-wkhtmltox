@@ -13,7 +13,7 @@
 
 ## Overview
 
-This module installs wkthmltopdf and wkhtmltoimage. This module currently only
+This module installs wkhtmltopdf and wkhtmltoimage. This module currently only
 supports Ubuntu 12.04 and 14.04 - Pull Requests are welcome for other platforms!
 
 ## Module Description
@@ -54,5 +54,5 @@ class { 'wkhtmltox':
 
 ## Limitations
 
-Currently only supports Ubuntu Precise and Ubunty Trusty. Submit and issue or
+Currently only supports Ubuntu Precise and Ubunty Trusty. Submit an issue or
 Pull Request if there are additional platforms you'd like to see supported.

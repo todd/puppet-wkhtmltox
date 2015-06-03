@@ -17,7 +17,7 @@ namespace :rspec do
   end
 end
 
-task :default => :rspec
+task :default => :spec
 
 begin
   if !ENV['CI'] && Gem::Specification::find_by_name('puppet-lint')
@@ -28,7 +28,7 @@ begin
     # Repo name/module name mismatch raises lint error
     PuppetLint.configuration.send :disable_autoloader_layout
 
-    task :default => [:rspec, :lint]
+    task :default => [:spec, :lint]
   end
 rescue Gem::LoadError
 end

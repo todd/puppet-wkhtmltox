@@ -1,6 +1,6 @@
 {
   "name": "todd-wkhtmltox",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "todd",
   "summary": "Puppet module for installing wkhtmltopdf and wkhtmltoimage",
   "license": "MIT",

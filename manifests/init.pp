@@ -33,17 +33,18 @@ class wkhtmltox ( $version = '0.12.2.1' ) {
     cwd     => '/tmp',
     command => "/usr/bin/wget ${base_url}/${version}/${filename}",
     creates => "/tmp/${filename}",
-    unless  => '/usr/bin/dpkg -s wkhtmltopdf'
+    unless  => "/usr/bin/test ${version} = $(/usr/bin/dpkg-query -W -f='\${Version}' wkhtmltox)"
   }
 
-  package { 'install_wkhtmltox':
-    ensure   => installed,
-    provider => 'dpkg',
+  ensure_packages('wkhtmltox', {
+    ensure   => present,
     source   => "/tmp/${filename}",
+    provider => 'dpkg',
     require  => Exec['install_deps']
-  }
+  } )
 
   exec { 'install_deps':
-    command => '/usr/bin/apt-get update && /usr/bin/apt-get -y -f install fontconfig libfontconfig1 libjpeg8 libxrender1 xfonts-base xfonts-75dpi'
+    command => '/usr/bin/apt-get update && /usr/bin/apt-get -y -f install fontconfig libfontconfig1 libjpeg8 libxrender1 xfonts-base xfonts-75dpi',
+    require => Exec['get_deb']
   }
 }

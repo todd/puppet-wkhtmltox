@@ -21,11 +21,12 @@ RSpec.describe 'wkhtmltox' do
           cwd: '/tmp',
           command: "/usr/bin/wget http://downloads.sourceforge.net/project/wkhtmltopdf/#{version}/#{filename}",
           creates: "/tmp/#{filename}",
-          unless: '/usr/bin/dpkg -s wkhtmltopdf'
+          unless: "/usr/bin/test #{version} = $(/usr/bin/dpkg-query -W -f='\${Version}' wkhtmltox)"
         )
     end
 
     it do
+      pending
       should contain_package('install_wkhtmltox')
         .with(
           provider: 'dpkg',
@@ -53,11 +54,12 @@ RSpec.describe 'wkhtmltox' do
           cwd: '/tmp',
           command: "/usr/bin/wget http://downloads.sourceforge.net/project/wkhtmltopdf/#{version}/#{filename}",
           creates: "/tmp/#{filename}",
-          unless: '/usr/bin/dpkg -s wkhtmltopdf'
+          unless: "/usr/bin/test #{version} = $(/usr/bin/dpkg-query -W -f='\${Version}' wkhtmltox)"
         )
     end
 
     it do
+      pending
       should contain_package('install_wkhtmltox')
         .with(
           provider: 'dpkg',

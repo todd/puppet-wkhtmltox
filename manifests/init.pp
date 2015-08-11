@@ -26,7 +26,13 @@
 # Copyright 2015 Todd Bealmear, unless otherwise noted.
 #
 class wkhtmltox ( $version = '0.12.2.1' ) {
-  $base_url = 'http://downloads.sourceforge.net/project/wkhtmltopdf'
+  if $version =~ /^(\d+\.\d+).+/ {
+    $release = $1
+  } else {
+    fail('$version is not properly formatted')
+  }
+
+  $base_url = "http://download.gna.org/wkhtmltopdf/${release}"
   $filename = "wkhtmltox-${version}_linux-${::lsbdistcodename}-${::architecture}.deb"
 
   exec { 'get_deb':

@@ -19,7 +19,7 @@ RSpec.describe 'wkhtmltox' do
       should contain_exec('get_deb')
         .with(
           cwd: '/tmp',
-          command: "/usr/bin/wget http://downloads.sourceforge.net/project/wkhtmltopdf/#{version}/#{filename}",
+          command: "/usr/bin/wget http://download.gna.org/wkhtmltopdf/0.12/#{version}/#{filename}",
           creates: "/tmp/#{filename}",
           unless: "/usr/bin/test #{version} = $(/usr/bin/dpkg-query -W -f='\${Version}' wkhtmltox)"
         )
@@ -52,7 +52,7 @@ RSpec.describe 'wkhtmltox' do
       should contain_exec('get_deb')
         .with(
           cwd: '/tmp',
-          command: "/usr/bin/wget http://downloads.sourceforge.net/project/wkhtmltopdf/#{version}/#{filename}",
+          command: "/usr/bin/wget http://download.gna.org/wkhtmltopdf/0.12/#{version}/#{filename}",
           creates: "/tmp/#{filename}",
           unless: "/usr/bin/test #{version} = $(/usr/bin/dpkg-query -W -f='\${Version}' wkhtmltox)"
         )

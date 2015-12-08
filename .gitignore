@@ -4,3 +4,4 @@ pkg
 .tmp
 Puppetfile.lock
 modules
+.ruby-version

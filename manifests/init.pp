@@ -34,6 +34,7 @@ class wkhtmltox ( $version = '0.12.2.1' ) {
 
   $base_url = "http://download.gna.org/wkhtmltopdf/${release}"
   $filename = "wkhtmltox-${version}_linux-${::lsbdistcodename}-${::architecture}.deb"
+  $dependencies = ['fontconfig', 'libfontconfig1', 'libjpeg8', 'libxrender1', 'xfonts-base', 'xfonts-75dpi']
 
   exec { 'get_deb':
     cwd     => '/tmp',
@@ -46,13 +47,13 @@ class wkhtmltox ( $version = '0.12.2.1' ) {
     {
       ensure   => present,
       source   => "/tmp/${filename}",
-      provider => 'dpkg',
-      require  => Exec['install_deps']
+      provider => 'dpkg'
     }
   )
 
-  exec { 'install_deps':
-    command => '/usr/bin/apt-get update && /usr/bin/apt-get -y -f install fontconfig libfontconfig1 libjpeg8 libxrender1 xfonts-base xfonts-75dpi',
-    require => Exec['get_deb']
-  }
+  ensure_packages($dependencies,
+    {
+      before => Package['wkhtmltox']
+    }
+  )
 }

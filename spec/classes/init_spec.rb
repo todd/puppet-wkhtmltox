@@ -26,21 +26,48 @@ RSpec.describe 'wkhtmltox' do
     end
 
     it do
-      pending
-      should contain_package('install_wkhtmltox')
+      should contain_package('wkhtmltox')
         .with(
           provider: 'dpkg',
           source:   "/tmp/#{filename}",
-          ensure:   'installed',
-          require:  'Exec[install_deps]'
+          ensure:   'present'
         )
     end
 
     it do
-      should contain_exec('install_deps')
-        .with(
-          command: '/usr/bin/apt-get update && /usr/bin/apt-get -y -f install fontconfig libfontconfig1 libjpeg8 libxrender1 xfonts-base xfonts-75dpi'
-        )
+      should contain_package('fontconfig').with(
+        before: "Package[wkhtmltox]"
+      )
+    end
+
+    it do
+      should contain_package('libfontconfig1').with(
+        before: "Package[wkhtmltox]"
+      )
+    end
+
+    it do
+      should contain_package('libjpeg8').with(
+        before: "Package[wkhtmltox]"
+      )
+    end
+
+    it do
+      should contain_package('libxrender1').with(
+        before: "Package[wkhtmltox]"
+      )
+    end
+
+    it do
+      should contain_package('xfonts-base').with(
+        before: "Package[wkhtmltox]"
+      )
+    end
+
+    it do
+      should contain_package('xfonts-75dpi').with(
+        before: "Package[wkhtmltox]"
+      )
     end
   end
 
@@ -59,13 +86,11 @@ RSpec.describe 'wkhtmltox' do
     end
 
     it do
-      pending
-      should contain_package('install_wkhtmltox')
+      should contain_package('wkhtmltox')
         .with(
           provider: 'dpkg',
           source:   "/tmp/#{filename}",
-          ensure:   'installed',
-          require:  'Exec[install_deps]'
+          ensure:   'present'
         )
     end
   end
